@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Spikes : MonoBehaviour
@@ -23,18 +24,26 @@ public class Spikes : MonoBehaviour
             Debug.Log("Trigger Worked");
             foreach (var spike in spikes)
             {
-                spike.GetComponent<Rigidbody2D>().gravityScale = 3f;
-
+                /*spike.GetComponent<Rigidbody2D>().gravityScale = 3f;*/
+                StartCoroutine(SpikesActivation());
             }
 
         }
-       /* foreach (var spike in spikes)
+        IEnumerator SpikesActivation()
         {
-            if (collision.tag == "Ground")
+            yield return new WaitForSeconds(1f);
+            foreach (var spike in spikes)
             {
-                Destroy(spike);
+                spike.GetComponent<Rigidbody2D>().gravityScale = 3f;
             }
-        }*/
-       
-    }
+            }
+            /* foreach (var spike in spikes)
+             {
+                 if (collision.tag == "Ground")
+                 {
+                     Destroy(spike);
+                 }
+             }*/
+
+        }
 }

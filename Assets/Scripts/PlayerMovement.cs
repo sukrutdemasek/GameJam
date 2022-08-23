@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     private float horizontal;
-    private float speed = 8f;
+    public float speed = 8f;
     public float jumpingPower = 10f;
     private bool isFacingRight = true;
     public GameObject Arrow;
