@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public bool KeyFound = false;
     public Image KeyInInventory;
     public GameObject DoorTrig;
+    //public int Arrows = 8;
 
     Vector2 lookDirection;
     float lookAngle;
@@ -48,18 +49,20 @@ public class PlayerMovement : MonoBehaviour
             Destroy(this.gameObject);
         }
 
-        horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = Input.GetAxisRaw("Horizontal"); //¬Œ“ ƒ¬»∆≈Õ»≈
 
         Flip();
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            //œ–€∆Œ 
         }
         if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.y > 0f)
         {
             {
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 1f);
+                //“Œ∆≈ œ–€∆Œ 
             }
         }
 
@@ -73,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
             GameObject Arrowclone = Instantiate(Arrow);
             Arrowclone.transform.position = FirePoint.position;
             Arrowclone.transform.rotation = Quaternion.Euler(0, 0, lookAngle);
-
+            //Arrows--;
             Arrowclone.GetComponent<Rigidbody2D>().velocity = FirePoint.right * ArrowSpeed;
         }
     }
