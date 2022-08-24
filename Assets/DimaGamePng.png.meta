@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 901f399fb5a75c34b9f99d91b365ae90
+=======
+guid: 1ec5bf2132bdfd6418d04324f210c174
+>>>>>>> 8d2b80e97bea8bf16cb893f3da4c298e7672100b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +46,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< HEAD
   spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> 8d2b80e97bea8bf16cb893f3da4c298e7672100b
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -76,6 +84,7 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -997,6 +1006,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+=======
+  spriteSheet:
+    serializedVersion: 2
+    sprites: []
+>>>>>>> 8d2b80e97bea8bf16cb893f3da4c298e7672100b
     outline: []
     physicsShape: []
     bones: []
@@ -1007,6 +1021,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+<<<<<<< HEAD
     nameFileIdTable:
       DimaGamePng_19: 63429891
       DimaGamePng_3: -1064167387
@@ -1050,6 +1065,9 @@ TextureImporter:
       DimaGamePng_4: 1592372954
       DimaGamePng_26: 793710161
       DimaGamePng_8: 1067144109
+=======
+    nameFileIdTable: {}
+>>>>>>> 8d2b80e97bea8bf16cb893f3da4c298e7672100b
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
