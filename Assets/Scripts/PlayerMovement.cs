@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor.SearchService;
+using Debug = System.Diagnostics.Debug;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     public bool KeyFound = false;
     public Image KeyInInventory;
     public GameObject DoorTrig;
+    [SerializeField]
+    Animator anim;
     //public int Arrows = 8;
 
     Vector2 lookDirection;
@@ -40,17 +43,26 @@ public class PlayerMovement : MonoBehaviour
         KeyInInventory.enabled = false;
         DoorTrig.SetActive(false);
         health.text = health.text + Health;
+       
     }
     // Update is called once per frame
     void Update()
     {
+      
         if (Health == 0)
         {
             Destroy(this.gameObject);
         }
 
         horizontal = Input.GetAxisRaw("Horizontal"); //ÂÎÒ ÄÂÈÆÅÍÈÅ
-
+        if(Mathf.Abs(horizontal) > 0.1f) {
+            anim.SetBool("Run", true);
+        }
+        else
+        {
+            anim.SetBool("Run", false);
+        }
+       
         Flip();
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
@@ -66,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
         FirePoint.rotation = Quaternion.Euler(0, 0, lookAngle);
