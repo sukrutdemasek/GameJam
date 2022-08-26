@@ -13,7 +13,7 @@ public class Chest : MonoBehaviour
       if (collision.tag == "Player")
         {
             anim.Play("OpenChest");
-            var dropPosition = new Vector3(1, 1, 0);
+            var dropPosition = new Vector3(0.2f, 0.2f, 0);
             Instantiate(drop);
             drop.transform.position = player.transform.position + dropPosition;
             Destroy(this.gameObject);

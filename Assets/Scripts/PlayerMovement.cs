@@ -40,15 +40,30 @@ public class PlayerMovement : MonoBehaviour
         KeyInInventory.enabled = false;
         DoorTrig.SetActive(false);
         health.text = health.text + Health;
+
     }
     // Update is called once per frame
     void Update()
     {
-        if (Health == 0)
-        {
-            Destroy(this.gameObject);
-        }
+        UnityEngine.Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        /*var PlayerScale = this.gameObject.transform.localScale.x;*/
 
+        if (horizontal > 0)
+        {
+            gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+        }
+        else if (horizontal < 0)
+        {
+            gameObject.transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
+        }
+            if (Health <= 0)
+            {
+                Destroy(this.gameObject);
+
+            }
+        
+        
+        health.text = health.text + Health;
         horizontal = Input.GetAxisRaw("Horizontal"); //ÂÎÒ ÄÂÈÆÅÍÈÅ
 
         Flip();
@@ -65,10 +80,12 @@ public class PlayerMovement : MonoBehaviour
                 //ÒÎÆÅ ÏÐÛÆÎÊ
             }
         }
-
-        lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //Vector2 playerPosition = transform.position;
+        lookDirection = Camera.main. ScreenToWorldPoint(Input.mousePosition);
+        //print(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-
+       // Vector2 direction = lookDirection - playerPosition;
+      //  transform.right = direction;
         FirePoint.rotation = Quaternion.Euler(0, 0, lookAngle);
 
         if (Input.GetMouseButtonDown(0))
@@ -76,14 +93,21 @@ public class PlayerMovement : MonoBehaviour
             GameObject Arrowclone = Instantiate(Arrow);
             Arrowclone.transform.position = FirePoint.position;
             Arrowclone.transform.rotation = Quaternion.Euler(0, 0, lookAngle);
-            //Arrows--;
-            Arrowclone.GetComponent<Rigidbody2D>().velocity = FirePoint.right * ArrowSpeed;
+           /* Arrowclone.GetComponent<Rigidbody2D>().AddForce(lookDirection, new ForceMode2D());
+            Arrowclone.GetComponent<Rigidbody2D>().velocity = new Vector2(3f, 3f) * ArrowSpeed;*/
+            Arrowclone.GetComponent<Rigidbody2D>().velocity = Arrowclone.transform.right.normalized * ArrowSpeed;
         }
+
+
+
+
     }
 
     private void FixedUpdate()
     {
         rb.velocity = new Vector3(horizontal * speed, rb.velocity.y);
+
+        
     }
 
     private void Flip()
@@ -108,6 +132,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Health--;
             Destroy(collision.gameObject);
+
         }
         if (collision.tag == ("Heart") && gameObject.tag == ("Player"))
         {
@@ -122,11 +147,12 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
 
         }
-        if (collision.tag == ("Door"))
+       /* if (collision.tag == ("Door"))
         {
             print("Door Opened!");
             SceneManager.LoadScene("Test");
-            
-        }
+
+
+        }*/
     }
 }
