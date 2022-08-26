@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public bool KeyFound = false;
     public Image KeyInInventory;
     public GameObject DoorTrig;
+    public Camera camera;
     [SerializeField]
     Animator anim;
     //public int Arrows = 8;
@@ -78,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-    //    lookDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        lookDirection = camera.ScreenToWorldPoint(Input.mousePosition);
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
         FirePoint.rotation = Quaternion.Euler(0, 0, lookAngle);

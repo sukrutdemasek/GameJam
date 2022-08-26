@@ -6,13 +6,17 @@ public class Chest : MonoBehaviour
 {
     public GameObject drop;
     public GameObject player;
-    [SerializeField] private Animator anim;
+     Animation anim;
     // Start is called before the first frame update
+    private void Start()
+    {
+        anim = GetComponent<Animation>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
       if (collision.tag == "Player")
         {
-            anim.Play("OpenChest");
+            anim.Play();
             var dropPosition = new Vector3(1, 1, 0);
             Instantiate(drop);
             drop.transform.position = player.transform.position + dropPosition;
