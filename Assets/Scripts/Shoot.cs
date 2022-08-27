@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-   
+    public Animator anim;
     public GameObject Arrow;
     public float ArrowSpeed;
     public Camera cam;
@@ -17,13 +17,16 @@ public class Shoot : MonoBehaviour
       
         if (Input.GetMouseButtonDown(0))
         {
-            
+            anim.Play("ReloadingBow");
             GameObject Arrowclone = Instantiate(Arrow, transform.position, Quaternion.identity );
            
         
             //Arrows--;
             Arrowclone.GetComponent<Rigidbody2D>().velocity = transform.right * ArrowSpeed;
             Arrowclone.transform.rotation = Quaternion.Euler(0, 0, rotZ);
+           
         }
     }
+    
 }
+
