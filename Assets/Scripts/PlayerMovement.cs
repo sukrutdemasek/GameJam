@@ -83,10 +83,10 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        lookDirection = camera.ScreenToWorldPoint(Input.mousePosition);
+       /* lookDirection = camera.ScreenToWorldPoint(Input.mousePosition);
         lookAngle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
-        FirePoint.rotation = Quaternion.Euler(0, 0, lookAngle);
+        FirePoint.rotation = Quaternion.Euler(transform.position.x, transform.position.y, lookAngle);
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
             Arrowclone.transform.rotation = Quaternion.Euler(0, 0, lookAngle);
             //Arrows--;
             Arrowclone.GetComponent<Rigidbody2D>().velocity = FirePoint.right * ArrowSpeed;
-        }
+        }*/
     }
 
     private void FixedUpdate()

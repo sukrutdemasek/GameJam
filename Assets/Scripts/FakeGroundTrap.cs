@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FakeGroundTrap : MonoBehaviour
@@ -9,12 +10,11 @@ public class FakeGroundTrap : MonoBehaviour
     {
         StartCoroutine(Delay());
     }
-
     private void OnCollisionExit2D(Collision2D collision)
     {
-        StartCoroutine(Respawn());
         StopCoroutine(Delay());
     }
+
     IEnumerator Delay()
     {
         yield return new WaitForSecondsRealtime(2f);
@@ -28,10 +28,5 @@ public class FakeGroundTrap : MonoBehaviour
 
 
     }
-    IEnumerator Respawn()
-    {
-        yield return new WaitForSeconds(2f);
-
-        this.gameObject.SetActive(true);
-    }
+   
 }
