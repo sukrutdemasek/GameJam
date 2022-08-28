@@ -50,6 +50,7 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, lineOfSite);
         Gizmos.DrawWireSphere(transform.position, shootingRange);
+       
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -9,7 +9,8 @@ public class Lava : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<CheckpointController>().RespawnPlayer();
+           // Destroy(collision.gameObject);
         }
     }
 }

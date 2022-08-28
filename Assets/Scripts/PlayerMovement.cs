@@ -56,7 +56,8 @@ public class PlayerMovement : MonoBehaviour
         else if (horizontal < 0) gameObject.transform.localScale = new Vector3(-0.8f, 0.8f, 0.8f);
         if (Health == 0)
         {
-            Destroy(this.gameObject);
+            this.gameObject.GetComponent<CheckpointController>().RespawnPlayer();
+            //Destroy(this.gameObject);
         }
 
         horizontal = Input.GetAxisRaw("Horizontal"); //бнр дбхфемхе
