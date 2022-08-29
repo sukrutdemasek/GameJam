@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  lineOfSite: 1
-  shootingRange: 0.5
+  lineOfSite: 0.5
+  shootingRange: 0.4
   FireRate: 2
   nextFireTime: 2
   bullet: {fileID: 370963198246167509, guid: 83f8585a6e8476f4f9813e0cb5db64e7, type: 3}

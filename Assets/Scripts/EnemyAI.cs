@@ -14,13 +14,15 @@ public class EnemyAI : MonoBehaviour
     public GameObject bullet;
     public GameObject bulletParent;
     private Transform player;
-    
+    private Transform enemyposition;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        enemyposition.position = gameObject.transform.position;
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class EnemyAI : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
         }
-        else if (distanceFromPlayer <= shootingRange && nextFireTime < Time.time )
+        else if (distanceFromPlayer <= shootingRange && nextFireTime < Time.time)
         {
             Instantiate(bullet, bulletParent.transform.position, Quaternion.identity);
             nextFireTime = Time.time + FireRate;
@@ -50,7 +52,7 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, lineOfSite);
         Gizmos.DrawWireSphere(transform.position, shootingRange);
-       
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -58,7 +60,15 @@ public class EnemyAI : MonoBehaviour
         {
             Destroy(this.gameObject);
             Destroy(collision.gameObject);
+            //StartCoroutine(Respawn());
         }
     }
+
+    /*IEnumerator Respawn()
+    {
+        yield return new WaitForSecondsRealtime(10f);
+
+        Instantiate(this.gameObject, enemyposition);
+    }*/
 }
 

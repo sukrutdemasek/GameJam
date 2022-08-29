@@ -16,7 +16,7 @@ public class AudioPlayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!alreadyPlayed)
+        if (!alreadyPlayed && collision.tag == "Player")
         {
             audio.PlayOneShot(SoundToPlay, volume);
             alreadyPlayed = true;

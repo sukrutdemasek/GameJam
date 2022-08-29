@@ -7,8 +7,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor.SearchService;
+
 using Debug = System.Diagnostics.Debug;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -43,12 +44,13 @@ public class PlayerMovement : MonoBehaviour
     {
         KeyInInventory.enabled = false;
         DoorTrig.SetActive(false);
-        health.text = health.text + Health;
+       
        
     }
     // Update is called once per frame
     void Update()
     {
+       
         if (horizontal > 0)
         {
             gameObject.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
